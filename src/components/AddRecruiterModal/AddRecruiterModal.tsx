@@ -19,6 +19,11 @@ const getRandomAvatar = () => {
     "a_recruiter_in_a_pop_art_style-2.jpeg",
     "a_recruiter_in_a_pop_art_style-3.jpeg",
     "a_recruiter_in_a_pop_art_style-4.jpeg",
+    "a_pop_art_image_of_an_indifferent_japanese_ghost-6.jpeg",
+    "a_pop_art_image_of_an_indifferent_japanese_ghost-5.jpeg",
+    "a_pop_art_image_of_a_less_scary_indifferent_japanese_ghost-2.jpeg",
+    "a_pop_art_image_of_a_less_scary_indifferent_japanese_ghost-3.jpeg",
+    "a_pop_art_image_of_a_less_scary_indifferent_japanese_ghost.jpeg",
     // Add more image filenames here
   ];
   const randomIndex = Math.floor(Math.random() * avatars.length);

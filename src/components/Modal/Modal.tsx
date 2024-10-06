@@ -33,7 +33,7 @@ export const Modal: React.FC<ModalProps> = ({
         onClick={onClose}
       ></div>{" "}
       {/* Overlay backdrop */}
-      <div className="bg-white h-min[300px] border-gray-300 border-2 rounded-md w-1/2 h-1/2 fixed inset-0 mx-auto my-auto z-10 flex flex-col items-center justify-center shadow-md">
+      <div className="bg-white min-h-[300px] min-w-[300px] border-gray-300 border-2 rounded-md w-1/2 h-1/2 fixed inset-0 mx-auto my-auto z-10 flex flex-col items-center justify-center shadow-md">
         <header>
           <h2 className="text-center mb-4">{title}</h2>
           <button

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AddRecruiterModal } from "@/components/AddRecruiterModal/AddRecruiterModal";
 import { WriteReviewModal } from "@/components/WriteReviewModal/WriteReviewModal";
+import { Button } from "@/components/Button/Button";
 
 type Recruiter = {
   id: string;
@@ -34,7 +35,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="p-4 max-w-screen-md mx-auto">
+    <div className="p-4 max-w-screen-lg mx-auto">
       <AddRecruiterModal
         open={openAddModal}
         onClose={() => setOpenAddModal(false)}
@@ -48,51 +49,78 @@ export default function Home() {
         title="Rate Recruiter"
         recruiterId={selectedRecruiter?.id}
       />
-      <div className="flex justify-between items-center">
-        <h1 className="text-center mb-8">Ghost Recruiters</h1>
+      <div className="flex justify-center items-center pb-4 transition-transform duration-200 hover:scale-110 sm:static fixed bottom-4 right-10 z-50">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-full"
+          className="bg-white text-black font-semibold px-8 py-5 rounded-full text-xl shadow-lg" // Added shadow-lg for box shadow
           onClick={() => setOpenAddModal(true)}
         >
           +
         </button>
       </div>
 
-      {recruiters.map((recruiter) => {
-        const linkedInUsername = extractLinkedInUsername(recruiter.linkedIn);
-        return (
-          <div key={recruiter.id} className="border-b border-gray-300 p-4">
-            <div className="flex items-center gap-2">
-              <a href={recruiter.linkedIn} title={linkedInUsername}>
-                <Image
-                  src="/images/linkedIn.png"
-                  alt="LinkedIn"
-                  width="25"
-                  height="25"
-                />
-              </a>
-              <h2>{recruiter.name}</h2> {linkedInUsername}{" "}
-            </div>
-            <footer className="flex gap-2">
-              <button
-                className="bg-primary text-white px-4 py-2 rounded-md"
-                onClick={() => {
-                  setSelectedRecruiter(recruiter);
-                  setOpenRateModal(true);
+      <div className="flex flex-row gap-4 flex-wrap justify-center">
+        {recruiters.map((recruiter) => {
+          const linkedInUsername = extractLinkedInUsername(recruiter.linkedIn);
+          return (
+            <Link
+              className="no-underline text-inherit"
+              href={`/recruiters/${recruiter.id}`}
+              key={recruiter.id}
+            >
+              <div
+                className="border-b border-gray-300 p-4 h-64 bg-cover bg-center flex flex-col justify-end hover:opacity-98 rounded-sm transition-transform duration-200 hover:scale-105"
+                style={{
+                  backgroundImage: `url('${recruiter.avatar}')`,
                 }}
               >
-                ⭐️ Write a review
-              </button>
-              <Link
-                className="bg-primary text-white px-4 py-2 rounded-md"
-                href={`/recruiters/${recruiter.id}`}
-              >
-                View reviews
-              </Link>
-            </footer>
-          </div>
-        );
-      })}
+                <div className="flex flex-col gap-2 bg-white/70 rounded-md p-2">
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={recruiter.linkedIn}
+                      title={linkedInUsername}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      <Image
+                        src="/images/linkedIn.png"
+                        alt="LinkedIn"
+                        width="30"
+                        height="30"
+                        className="hover:opacity-100 transform transition-transform duration-200 hover:scale-110"
+                      />
+                    </a>
+                    <span className="flex flex-col">
+                      <h2>{recruiter.name}</h2>
+                      <div className="text-sm">{linkedInUsername}</div>
+                    </span>
+                  </div>
+
+                  <footer className="flex gap-2">
+                    <Button
+                      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        e.stopPropagation(); // Prevents the Link from being triggered
+                        e.preventDefault();
+                        setSelectedRecruiter(recruiter);
+                        setOpenRateModal(true);
+                      }}
+                    >
+                      ⭐️ Add review
+                    </Button>
+                    <Link
+                      className="bg-secondaryDim hover:bg-secondaryDimDim  text-white px-4 py-1 rounded-full text-sm"
+                      href={`/recruiters/${recruiter.id}`}
+                      onClick={(e) => e.stopPropagation()} // Prevents the Link from being triggered
+                    >
+                      View reviews
+                    </Link>
+                  </footer>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }

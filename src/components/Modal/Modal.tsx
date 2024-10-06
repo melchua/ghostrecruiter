@@ -13,8 +13,6 @@ export const Modal: React.FC<ModalProps> = ({
   title,
   children,
 }) => {
-  if (!open) return null;
-
   useEffect(() => {
     // Close modal on escape key
     const handleEscape = (e: KeyboardEvent) => {
@@ -25,6 +23,8 @@ export const Modal: React.FC<ModalProps> = ({
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
+
+  if (!open) return null;
 
   return (
     <>

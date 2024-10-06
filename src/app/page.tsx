@@ -33,7 +33,7 @@ export default function Home() {
       <AddRecruiterModal
         open={openAddModal}
         onClose={() => setOpenAddModal(false)}
-        title="Add Recruiter"
+        title="Add Ghost Recruiter"
         setRecruiters={setRecruiters}
       />
       <WriteReviewModal

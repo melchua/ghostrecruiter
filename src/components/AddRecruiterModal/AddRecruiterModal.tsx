@@ -52,8 +52,8 @@ export const AddRecruiterModal: React.FC<AddRecruiterModalProps> = ({
 
   return (
     <Modal open={open} onClose={onClose} title={title}>
-      <form className="flex flex-col gap-2 items-center">
-        <label htmlFor="name" className="flex flex-col gap-2">
+      <form className="flex flex-col gap-2 items-center w-full p-8">
+        <label htmlFor="name" className="flex flex-col gap-2 w-full">
           Recruiter Name
           <input
             id="name"
@@ -64,12 +64,12 @@ export const AddRecruiterModal: React.FC<AddRecruiterModalProps> = ({
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <label htmlFor="linkedin" className="flex flex-col gap-2">
+        <label htmlFor="linkedin" className="flex flex-col gap-2 w-full">
           LinkedIn URL
           <input
             id="linkedin"
             type="text"
-            placeholder="LinkedIn URL"
+            placeholder="https://www.linkedin.com/in/recruiter-name/"
             className="border-2 border-gray-300 rounded-md p-2"
             value={linkedIn}
             onChange={(e) => setLinkedIn(e.target.value)}

@@ -8,20 +8,27 @@ function Star({ filled, starIcon }: { filled: boolean; starIcon: string }) {
   );
 }
 
+type StarRatingProps = {
+  numOfStars: number;
+  value: number;
+  setValue: (value: number) => void;
+  starIcon?: string;
+};
+
 export default function StarRating({
   numOfStars,
   value,
   setValue,
   starIcon = "⭐️",
-}) {
+}: StarRatingProps) {
   const [numStarsHovered, setNumStarsHovered] = useState(0);
 
-  const handleClickStar = (index) => {
+  const handleClickStar = (index: number) => {
     const newNumOfStars = index + 1;
     setValue(newNumOfStars);
   };
 
-  const handleHoverStar = (index) => {
+  const handleHoverStar = (index: number) => {
     const newNumOfStars = index + 1;
     setNumStarsHovered(newNumOfStars);
   };

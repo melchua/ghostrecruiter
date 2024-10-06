@@ -47,7 +47,7 @@ export default function Home() {
         open={openRateModal}
         onClose={() => setOpenRateModal(false)}
         title="Rate Recruiter"
-        recruiterId={selectedRecruiter?.id}
+        recruiterId={selectedRecruiter?.id || ""}
       />
       <div className="flex justify-center items-center pb-4 transition-transform duration-200 hover:scale-110 sm:static fixed bottom-4 right-10 z-50">
         <button

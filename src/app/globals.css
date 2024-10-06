@@ -5,19 +5,33 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --brand: #0000ff;
+  --primary: #39a0ed;
+  --secondary: #36f1cd;
+  --primary-dim: #4c6085;
+  --secondary-dim: #13c4a3;
+  --tertiary: #32322c;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--brand);
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 @layer utilities {

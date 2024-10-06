@@ -44,6 +44,7 @@ export default function StarRating({
         const isFilled = index < starsFilledToDisplay;
         return (
           <button
+            key={index}
             className="starButton"
             onClick={() => handleClickStar(index)}
             onMouseEnter={() => handleHoverStar(index)}

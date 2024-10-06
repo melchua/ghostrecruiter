@@ -7,7 +7,7 @@ export default function BackButton() {
 
   return (
     <button
-      onClick={() => router.back()}
+      onClick={() => router.push("/")}
       className="back-button text-white text-2xl font-bold p-2 transition-transform duration-200 hover:scale-150"
     >
       ﹤

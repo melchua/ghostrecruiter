@@ -64,7 +64,7 @@ const RecruiterPage = () => {
           {recruiter?.reviews?.length > 0 ? (
             recruiter?.reviews.map((review) => (
               <div key={review.id}>
-                <div>"{review.comment}"</div>
+                <div>&#34;{review.comment}&#34;</div>
               </div>
             ))
           ) : (

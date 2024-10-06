@@ -44,7 +44,7 @@ export const AddRecruiterModal: React.FC<AddRecruiterModalProps> = ({
     await addRecruiter({ name, linkedIn, avatar: getRandomAvatar() });
     // Fetch the updated list of recruiters
     const updatedRecruiters = await getRecruiters();
-    setRecruiters(updatedRecruiters as any);
+    setRecruiters(updatedRecruiters as RecruiterType[]);
     setName("");
     setLinkedIn("");
     onClose();

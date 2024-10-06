@@ -5,10 +5,12 @@ type ReviewType = {
   comment: string;
 };
 
-type RecruiterType = {
+export type RecruiterType = {
+  id?: string;
   name: string;
   linkedIn: string;
   avatar: string;
+  reviews?: ReviewType[];
 };
 
 export async function addReview(data: ReviewType, recruiterId: string) {

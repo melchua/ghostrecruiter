@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { addRecruiter, getRecruiters } from "@/lib/firebase/firestore";
+import { RecruiterType } from "@/lib/firebase/firestore";
 
 interface AddRecruiterModalProps {
   open: boolean;
   onClose: () => void;
   title: string;
-  setRecruiters: (recruiters: unknown) => void; // type this better later
-  setOpenAddModal: (open: boolean) => void;
+  setRecruiters: (recruiters: RecruiterType[]) => void;
 }
 
 const getRandomAvatar = () => {

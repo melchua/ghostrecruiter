@@ -6,12 +6,7 @@ import Link from "next/link";
 import { AddRecruiterModal } from "@/components/AddRecruiterModal/AddRecruiterModal";
 import { WriteReviewModal } from "@/components/WriteReviewModal/WriteReviewModal";
 import { Button } from "@/components/Button/Button";
-
-type Recruiter = {
-  id: string;
-  name: string;
-  linkedIn: string;
-};
+import { RecruiterType } from "@/lib/firebase/firestore";
 
 function extractLinkedInUsername(url: string): string {
   const match = url.match(/linkedin\.com\/in\/([^/]+)/);
@@ -19,17 +14,16 @@ function extractLinkedInUsername(url: string): string {
 }
 
 export default function Home() {
-  const [recruiters, setRecruiters] = useState<Recruiter[]>([]);
+  const [recruiters, setRecruiters] = useState<RecruiterType[]>([]);
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openRateModal, setOpenRateModal] = useState(false);
-  const [selectedRecruiter, setSelectedRecruiter] = useState<Recruiter | null>(
-    null
-  );
+  const [selectedRecruiter, setSelectedRecruiter] =
+    useState<RecruiterType | null>(null);
 
   useEffect(() => {
     const fetchRecruiters = async () => {
       const recruiters = await getRecruiters();
-      setRecruiters(recruiters as Recruiter[]);
+      setRecruiters(recruiters as RecruiterType[]);
     };
     fetchRecruiters();
   }, []);
@@ -41,7 +35,6 @@ export default function Home() {
         onClose={() => setOpenAddModal(false)}
         title="Add Recruiter"
         setRecruiters={setRecruiters}
-        setOpenAddModal={setOpenAddModal}
       />
       <WriteReviewModal
         open={openRateModal}

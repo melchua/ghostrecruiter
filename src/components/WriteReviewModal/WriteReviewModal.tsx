@@ -22,7 +22,9 @@ export const WriteReviewModal: React.FC<WriteReviewModalProps> = ({
     e.preventDefault();
     await addReview({ comment }, recruiterId);
     setComment("");
-    onRefetch && (await onRefetch());
+    if (onRefetch) {
+      await onRefetch();
+    }
     onClose();
   };
 

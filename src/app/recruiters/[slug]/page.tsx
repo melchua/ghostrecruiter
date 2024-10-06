@@ -59,7 +59,7 @@ const RecruiterPage = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h1>Ghostsightings for {recruiter?.name}</h1>{" "}
+          <h1>Ghostsightings for {recruiter?.name}</h1>
           {/* Use the 'slug' parameter */}
           {recruiter?.reviews?.length > 0 ? (
             recruiter?.reviews.map((review) => (

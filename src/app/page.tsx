@@ -29,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     const fetchRecruiters = async () => {
       const recruiters = await getRecruiters();
-      setRecruiters(recruiters as any);
+      setRecruiters(recruiters as Recruiter[]);
     };
     fetchRecruiters();
   }, []);

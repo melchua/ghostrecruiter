@@ -6,7 +6,7 @@ interface AddRecruiterModalProps {
   open: boolean;
   onClose: () => void;
   title: string;
-  setRecruiters: (recruiters: any) => void;
+  setRecruiters: (recruiters: unknown) => void; // type this better later
   setOpenAddModal: (open: boolean) => void;
 }
 

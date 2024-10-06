@@ -12,15 +12,10 @@ type RecruiterType = {
 };
 
 export async function addReview(data: ReviewType, recruiterId: string) {
-  console.log("data", data);
-
   const recruiterRef = doc(db, "recruiters", recruiterId);
   const reviewRef = collection(recruiterRef, "reviews");
 
-  await addDoc(reviewRef, data),
-    {
-      comment: data.comment,
-    };
+  await addDoc(reviewRef, data);
 }
 
 export async function addRecruiter(data: RecruiterType) {

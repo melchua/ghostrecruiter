@@ -76,7 +76,7 @@ export default function Home() {
                       }}
                     >
                       <Image
-                        src="/images/linkedIn.png"
+                        src="/images/linkedin.png"
                         alt="LinkedIn"
                         width="30"
                         height="30"
